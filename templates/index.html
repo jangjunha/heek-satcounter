@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset=utf-8>
+	<meta name=viewport content="width=device-width, initial-scale=1">
+	<title>HEEK.KR</title>
+	<script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
+</head>
+<body>
+	<h1>히-익</h1>
+	<form action={{ url_for('submit_entry') }} method=post>
+	<input type=text id=message name=message value="{{entry}}">
+	</form>
+	<h3 id="time"></h3>
+
+	DNS powered by: 안정적인 DNS서비스 <a href="http://www.dnsever.com" target="dnsever"><font color="#1111f1">DNS</font><font color="#f11111">Ever</font></a>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-48821476-1', 'heek.kr');
+  ga('send', 'pageview');
+</script>
+</body>
+</html>
+<link rel="stylesheet" href="{{ url_for('static', filename='heek.min.css') }}">

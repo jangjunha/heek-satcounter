@@ -1,0 +1,46 @@
+body {
+	background-color: #333;
+	color: #ddd;
+}
+h1 {
+	text-align: center;
+	background-color: #4e5ff4;
+	color: #ccc;
+	padding: 10px;
+	padding-bottom: 3px;
+	border-bottom: 8px solid #5e6fd4;
+}
+
+#contentBox {
+	list-style: none;
+	margin: 2em auto;
+	width: 80%;
+	border: 8px solid #ccc;
+	padding: 0;
+}
+
+#contentBox .item {
+	font-size: 2em;
+	background-color: #222;
+	border-bottom: 2px solid #555;
+	padding: 0.8em 2em;
+}
+
+#pager {
+	margin: 2em auto;
+	font-size: 2em;
+	width: 80%;
+	list-style: none;
+	display: table;
+}
+
+#pager a {
+	display: table-cell;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	background-color: #666;
+	padding: 1em;
+	border-left: 1px solid #333;
+	border-right: 1p solid #333;
+}

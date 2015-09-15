@@ -1,0 +1,1 @@
+body{height:100%}h1{font-size:11em;text-align:center;margin:auto}#message{width:100%;font-size:6em;color:#aaa;text-align:center;margin:auto;border:0}#time{text-align:center;font-size:8em;color:#354674}@media all and (max-width:1000px){#time{font-size:5em}}@media all and (max-width:600px){h1{font-size:6em}#message{font-size:3em}#time{font-size:2em}}
