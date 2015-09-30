@@ -50,7 +50,7 @@ def submit_entry():
 	heekPost = PostRoot(key_name='heek', version=2)
 
 	post = Post(parent=heekPost)
-	post.text = request.form['message']
+	post.text = request.form['message'][0:128]
 	post.datetime = datetime.now()
 
 	post.put()	
