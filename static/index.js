@@ -10,9 +10,15 @@ $(document).ready(function() {
 	
 	setInterval(function() {
 		var now = new Date();
-		then=new Date(2015, 10, 12, 8, 40, 0, 0);
-		
+		then = new Date(2015, 10, 12, 8, 40, 0, 0);
+		then_next = new Date(2016, 11 - 1, 17, 8, 40, 0, 0);
+
 		var dms = then.getTime() - now.getTime();
+		if (dms < 0) {
+			then = then_next;
+			dms = then.getTime() - now.getTime();
+		}
+
 		var ms = dms;
 		var sec = ms / 1000;	ms %= 1000;
 		var min = sec / 60;		sec %= 60;
