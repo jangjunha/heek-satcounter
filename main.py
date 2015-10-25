@@ -2,7 +2,7 @@
 from contextlib import closing
 from flask import Flask, render_template, g, url_for, redirect, request
 from models import Post, PostRoot
-from datetime import datetime
+from datetime import datetime, timedelta
 
 import time
 
@@ -26,8 +26,11 @@ def getMessage():
 
 def getSatTime():
         now = datetime.now()
-        sat = datetime(2014, 11, 13, 8, 40)
+        sat = datetime(2015, 11, 12, 8, 40)
         interval = sat - now
+	if interval < timedelta(0):
+		sat = datetime(2016, 11, 17, 8, 40)
+		interval = sat - now
 
         days = interval.days
         hours = interval.seconds / 60 / 60
@@ -38,12 +41,13 @@ def getSatTime():
 	pre = u"히익"
 	sattime = u"%d일 %d시간 %d분 %d초 %d" % (days, hours, minutes, seconds, ms)
 	msg = getMessage()
-	return pre + "\n" + sattime + "\n" + msg
+	return pre + " " + sattime + " " + msg
 
 @app.route('/')
 def index():
 	msg = getMessage()
-	return render_template('index.html', entry=msg)
+	time = getSatTime()
+	return render_template('index.html', entry=msg, time=time)
 
 @app.route('/submit_entry', methods=['POST'])
 def submit_entry():

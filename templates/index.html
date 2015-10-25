@@ -1,6 +1,8 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+	<meta property="og:title" content="HEEK.KR : {{ entry }}" />
+	<meta property="og:description" content="{{ time }}" />
 	<meta charset=utf-8>
 	<meta name=viewport content="width=device-width, initial-scale=1">
 	<title>HEEK.KR</title>
@@ -10,7 +12,7 @@
 <body>
 	<h1>히-익</h1>
 	<form action={{ url_for('submit_entry') }} method=post>
-	<input type=text id=message name=message value="{{entry}}">
+	<input type=text id=message name=message value="{{ entry }}">
 	</form>
 	<h3 id="time"></h3>
 
