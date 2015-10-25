@@ -38,10 +38,8 @@ def getSatTime():
         seconds = interval.seconds % 60
         ms = interval.microseconds % 1000
 
-	pre = u"히익"
 	sattime = u"%d일 %d시간 %d분 %d초 %d" % (days, hours, minutes, seconds, ms)
-	msg = getMessage()
-	return pre + " " + sattime + " " + msg
+	return sattime
 
 @app.route('/')
 def index():
