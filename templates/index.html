@@ -15,6 +15,7 @@
 	<script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
 </head>
 <body>
+	<div id="box" style="background-color: rgb(251, 223, 85); border: 4px dashed rgb(222, 188, 42); padding: 16px; font-size: 2em; line-height: 1.6em; margin-bottom: 8px; text-align: center; display: none; cursor: pointer;"><span style="font-weight: 700">[클릭] 제9회 앱-잼</span><br><span id="box-text"></span></div>
 	<h1>히-익</h1>
 	<form action={{ url_for('submit_entry') }} method=post>
 	<input type=text id=message name=message value="{{ entry }}">
