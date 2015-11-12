@@ -7,16 +7,30 @@ $(document).ready(function() {
 		return true;
 	});
 
-	
+	var a9 = false;
 	setInterval(function() {
 		var now = new Date();
 		then = new Date(2015, 10, 12, 8, 40, 0, 0);
+		then_a9 = new Date(2015, 12 - 1, 19, 13, 0, 0, 0);
 		then_next = new Date(2016, 11 - 1, 17, 8, 40, 0, 0);
 
 		var dms = then.getTime() - now.getTime();
 		if (dms < 0) {
-			then = then_next;
-			dms = then.getTime() - now.getTime();
+			if (then_a9.getTime() - now.getTime() >= 0) {
+				// A9 SPECIAL PAGE
+				then = then_a9;
+				dms = then.getTime() - now.getTime();
+				
+				if (!a9) {
+					a9 = true;
+					$('h1').text('앱-잼');
+					$('body').css('cursor', 'pointer');
+					$('body').click(function() { location.href="//www.appjam.kr"; });
+				}
+			} else {
+				then = then_next;
+				dms = then.getTime() - now.getTime();
+			}
 		}
 
 		var ms = dms;
