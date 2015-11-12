@@ -26,6 +26,10 @@ $(document).ready(function() {
 					$('h1').text('앱-잼');
 					$('body').css('cursor', 'pointer');
 					$('body').click(function() { location.href="//www.appjam.kr"; });
+					$('#message').click(function() {
+						if (!event) window.event.cancelBubble(true);
+						else event.stopPropagation();
+					});
 				}
 			} else {
 				then = then_next;
