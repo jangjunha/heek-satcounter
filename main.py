@@ -9,14 +9,14 @@ import time
 # configuration
 DATABASE = 'tmp/heekmsg.db'
 DEBUG = False
-SECRET_KEY = 'development key'
+SECRET_KEY = 'dsjf9*#jdfJ(#rj)3ifkw0(EoFk32p'
 
 app = Flask(__name__)
 app.config.from_object(__name__)
 
 def getMessage():
 	heekPost = PostRoot(key_name='heek', version=2)
-	
+
 	query = Post.all()
 	query.ancestor(heekPost)
 	query.order('-datetime')
@@ -24,28 +24,41 @@ def getMessage():
 	for post in query.run(limit=1):
         	return post.text
 
-def getSatTime():
-        now = datetime.now()
-        sat = datetime(2015, 11, 12, 8, 40)
-        interval = sat - now
-	if interval < timedelta(0):
-		sat = datetime(2016, 11, 17, 8, 40)
-		interval = sat - now
+def getSatTimedelta():
+	now = datetime.now()
+	sat = datetime(2016, 11, 17, 8, 40)
+	interval = sat - now
 
-        days = interval.days
-        hours = interval.seconds / 60 / 60
-        minutes = interval.seconds / 60 % 60
-        seconds = interval.seconds % 60
-        ms = interval.microseconds % 1000
+	# if interval < timedelta(0):
+	# 	sat = datetime(2016, 11, 17, 8, 40)
+	# 	interval = sat - now
 
-	sattime = u"%d일 %d시간 %d분 %d초 %d" % (days, hours, minutes, seconds, ms)
-	return sattime
+	return interval
+
+def formatTime(interval):
+	days = interval.days
+	hours = interval.seconds / 60 / 60
+	minutes = interval.seconds / 60 % 60
+	seconds = interval.seconds % 60
+	ms = interval.microseconds / 1000
+
+	return u"%d일 %d시간 %d분 %d초 %d" % (days, hours, minutes, seconds, ms)
 
 @app.route('/')
 def index():
 	msg = getMessage()
-	time = getSatTime()
-	return render_template('index.html', entry=msg, time=time)
+
+	interval = getSatTimedelta()
+	time = formatTime(interval)
+
+	blue = interval.total_seconds() / (365 * 24 * 60 * 60) * 255
+	red = 255 - blue
+	theme_color = '#%02x%02x%02x' % (red, blue, 0)
+
+	return render_template('index.html',
+						   entry=msg,
+						   time=time,
+						   theme_color=theme_color)
 
 @app.route('/submit_entry', methods=['POST'])
 def submit_entry():
@@ -55,7 +68,7 @@ def submit_entry():
 	post.text = request.form['message'][0:128]
 	post.datetime = datetime.now()
 
-	post.put()	
+	post.put()
 
 	return redirect(url_for('index'))
 
@@ -63,15 +76,15 @@ def submit_entry():
 def history():
 	show_count = 50
 	startPage = int(request.args.get('page', 1))
-	
+
 	prevpage = startPage - 1
 	if prevpage <= 0:
-		prevpage = None	
+		prevpage = None
 	nextpage = startPage + 1
 
 	startOffset = startPage * show_count - show_count
 	nextOffset = nextpage * show_count - show_count
-	
+
 	heekPost = PostRoot(key_name='heek', version=2)
 	query = Post.all()
 	query.ancestor(heekPost)
@@ -85,4 +98,3 @@ def history():
 		nextpage = None
 
 	return render_template('history.html', contents=rows, prevpage=prevpage, nextpage=nextpage)
-
