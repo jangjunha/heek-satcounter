@@ -1,4 +1,0 @@
-# DATABASE = 'tmp/heekmsg.db'
-DEBUG = False
-SECRET_KEY = 'SET-THIS-SECRET-KEY!!'
-PREFERRED_URL_SCHEME = 'https'
