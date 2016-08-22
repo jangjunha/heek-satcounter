@@ -31,23 +31,13 @@ $(document).ready(function() {
 	var a9 = false;
 	setInterval(function() {
 		var now = new Date();
-		then = new Date(2015, 10, 12, 8, 40, 0, 0);
-		then_a9 = new Date(2015, 12 - 1, 19, 13, 0, 0, 0);
-		then_next = new Date(2016, 11 - 1, 17, 8, 40, 0, 0);
+		then_a9 = new Date(2016, 5 - 1, 25, 14, 00, 0, 0);
+		then = new Date(2016, 11 - 1, 17, 8, 40, 0, 0);
 
 		var dms = then.getTime() - now.getTime();
-		if (dms < 0) {
-			if (then_a9.getTime() - now.getTime() >= 0) {
-				// A9 SPECIAL PAGE
-				if (!a9) {
-					a9 = true;
-					$('#box').click(function() { location.href="//www.appjam.kr"; });
-                    $('#box').css('display', 'block');
-				}
-				$('#box-text').text(calc(then_a9.getTime() - now.getTime()).text);
-			}
-            then = then_next;
-            dms = then.getTime() - now.getTime();
+		if (then_a9.getTime() - now.getTime() > 0) {
+            then = then_a9;
+            dms = then_a9.getTime() - now.getTime();
 		}
 
 		var res = calc(dms);		
