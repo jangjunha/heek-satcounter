@@ -14,8 +14,7 @@ function calc(dms) {
         var red = 255 - blue;
         var color = 'rgb(' + red + ',' + blue + ',0)';
 
-        var res = day + "일 " + hr + "시간 " + min + "분 " + sec + "초 " + ms;
-	return {'color': color, 'text': res};
+	return {'color': color, 'day': day, 'hr': hr, 'min': min, 'sec': sec, 'ms': ms};
 }
 
 
@@ -42,7 +41,12 @@ $(document).ready(function() {
 
 		var res = calc(dms);		
 
-		$('#time').text(res.text);
+		$('#day').text(res.day + '일');
+		$('#hr').text(res.hr + '시간');
+		$('#min').text(res.min + '분');
+		$('#sec').text(res.sec + '초');
+		$('#ms').text(res.ms);
+
 		$('#time').css('color', res.color);
 	},25);
 });
