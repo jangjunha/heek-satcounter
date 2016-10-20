@@ -62,3 +62,6 @@ docs/_build/
 
 # OSX Directory File
 .DS_Store
+
+# IDE setting files
+.idea/
