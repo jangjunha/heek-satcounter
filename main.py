@@ -1,6 +1,6 @@
 #-*- coding: utf-8 -*-
 from contextlib import closing
-from flask import Flask, render_template, g, url_for, redirect, request
+from flask import Flask, render_template, g, url_for, redirect, request, abort
 from models import Post, PostRoot
 from datetime import datetime, timedelta
 from acme import ACME
@@ -18,6 +18,7 @@ def acme_challenge(acme_key):
 		if request.url.startswith(domain):
 			if acme_key == ACME[domain][0]:
 				return ACME[domain][1]
+	return abort(404)
 
 
 def getMessage():
