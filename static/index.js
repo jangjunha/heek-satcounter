@@ -28,16 +28,14 @@ $(document).ready(function() {
 		return true;
 	});
 
-	var a9 = false;
 	setInterval(function() {
 		var now = new Date();
-		then_a9 = new Date(2016, 5 - 1, 25, 14, 00, 0, 0);
 		then = new Date(2016, 11 - 1, 17, 8, 40, 0, 0);
+		then_next = new Date(2017, 11 - 1, 16, 8, 40, 0, 0);
 
 		var dms = then.getTime() - now.getTime();
-		if (then_a9.getTime() - now.getTime() > 0) {
-            then = then_a9;
-            dms = then_a9.getTime() - now.getTime();
+		if (dms < 0) {
+			dms = then_next.getTime() - now.getTime();
 		}
 
 		var res = calc(dms);		
