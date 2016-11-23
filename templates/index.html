@@ -16,12 +16,6 @@
 	<script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
 </head>
 <body>
-	<div>
-		<audio controls autoplay>
-			<source src="https://drive.google.com/uc?id=0B5Pokis6Hk5OYnB6VXN4YmxXbUE&authuser=0&export=download">
-		</audio>
-		<p>배경음악: &lt;동양풍 노-래&gt; by <a href="https://twitter.com/muwen_">@muwen_</a></p>
-	</div>
 	<h1>히-익</h1>
 	<form action={{ url_for('submit_entry') }} method=post>
 	<input type=text id=message name=message value="{{ entry }}">
