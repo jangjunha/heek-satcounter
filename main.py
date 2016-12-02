@@ -33,7 +33,7 @@ def getMessage():
 
 def getSatTimedelta():
 	now = datetime.now()
-	sat = datetime(2016, 11, 17, 8, 40)
+	sat = datetime(2017, 11, 16, 8, 40)
 	interval = sat - now
 
 	# if interval < timedelta(0):
