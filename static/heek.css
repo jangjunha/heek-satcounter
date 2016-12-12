@@ -18,9 +18,37 @@ h1 {
 }
 
 #time {
+	width: 100%;
 	text-align: center;
 	font-size: 8em;
 	color: #354674;
+	font-weight: bold;
+	display: table;
+	margin: 10% auto;
+}
+
+#day, #hr, #min, #sec, #ms {
+	float: left;
+}
+
+#day {
+	width: 20%;
+}
+
+#hr {
+	width: 24%;
+}
+
+#min {
+	width: 20%;
+} 
+
+#sec {
+	width: 20%;
+}
+
+#ms {
+	width: 16%;
 }
 
 @media all and (max-width: 1000px) {
@@ -28,7 +56,12 @@ h1 {
 		font-size: 5em;
 	}
 }
-@media all and (max-width: 600px) {
+@media all and (max-width: 850px) {
+	#time {
+		font-size: 4em;
+	}
+}
+@media all and (max-width: 650px) {
 	h1 {
 		font-size: 6em;	
 	}
@@ -37,5 +70,16 @@ h1 {
 	}
 	#time {
 		font-size: 2em;
+	}
+}
+@media all and (max-width: 400px) {
+	h1 {
+		font-size: 5em;
+	}
+	#message {
+		font-size: 2.5em;
+	}
+	#time {
+		font-size: 1.5em;
 	}
 }
