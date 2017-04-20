@@ -1,3 +1,5 @@
+_acme_challenge
+
 cron_log
 /tmp
 *.bk

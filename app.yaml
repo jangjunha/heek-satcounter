@@ -5,6 +5,9 @@ api_version: 1
 threadsafe: yes
 
 handlers:
+- url: /\.well-known/acme-challenge/(.+)$
+  static_files: _acme_challenge/\1
+  upload: _acme_challenge/.+$
 - url: .*
   script: main.app
 

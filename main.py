@@ -3,23 +3,11 @@ from contextlib import closing
 from flask import Flask, render_template, g, url_for, redirect, request, abort
 from models import Post, PostRoot
 from datetime import datetime, timedelta
-from acme import ACME
 import time
 
 
 app = Flask(__name__)
 app.config.from_object('config')
-
-
-# For domain validation.
-@app.route('/.well-known/acme-challenge/<string:acme_key>')
-def acme_challenge(acme_key):
-	for domain in ACME:
-		if request.url.startswith(domain):
-			if acme_key == ACME[domain][0]:
-				return ACME[domain][1]
-	return abort(404)
-
 
 def getMessage():
 	heekPost = PostRoot(key_name='heek', version=2)
